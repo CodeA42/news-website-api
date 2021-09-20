@@ -2,13 +2,13 @@ const router = require("express").Router();
 const bcrypt = require('bcrypt');
 const User = require("../../db/models/users.model");
 
-router.post("/create", async (req, res) => {
+router.post("/register", async (req, res) => {
     const user = new User();
   
     // Note - Promise.all fails fast
     const [email, username] = await Promise.all([
-        user.findOne({email: req.body.email}).exec(),
-        user.findOne({username: req.body.username}).exec()
+        User.findOne({email: req.body.email}).exec(),
+        User.findOne({username: req.body.username}).exec()
     ])
 
     if(!!email || !!username) {
@@ -16,9 +16,11 @@ router.post("/create", async (req, res) => {
             email: !!email,
             username: !!username
         })
+        return;
     }
 
-    const saltRounds = process.env.saltRounds;
+    console.log(typeof process.env.saltRounds);
+    const saltRounds = Number(process.env.saltRounds);
     const passwordPlain = req.body.password;
     try {
         const passwordHashed = await bcrypt.hash(passwordPlain, saltRounds);
@@ -39,6 +41,5 @@ router.post("/create", async (req, res) => {
         res.status(400);
     }
   });
-
 
 module.exports = router;
