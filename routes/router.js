@@ -1,6 +1,8 @@
 const router = require("express").Router();
 
-router.use("/users", require("./user/controller"));
+router.use("/users", require("./users/controller"));
+router.use("/users", require("./users/register"));
+router.use("/users", require("./users/login"));
 
 //Article controllers
 router.use("/articles", require("./articles/get"));
