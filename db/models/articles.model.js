@@ -1,7 +1,6 @@
 const mongoose = require("mongoose");
 
-const articleSchema = new mongoose.Schema(
-  {
+const articleSchema = new mongoose.Schema({
     title: { type: String, required: true },
     body: { type: String, required: true },
     postDate: { type: Date, default: Date.now },
