@@ -4,7 +4,7 @@ require("dotenv").config();
 const app = express();
 
 //Init db
-require("./db/db");
+require("./lib/db/db");
 
 //Init router
 const router = require("./routes/router");
