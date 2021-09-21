@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const bcrypt = require('bcrypt');
-const User = require("../../db/models/users.model");
+const User = require("../../lib/models/users.model");
 
 router.post("/register", async (req, res) => {
     const user = new User();
@@ -19,7 +19,6 @@ router.post("/register", async (req, res) => {
         return;
     }
 
-    console.log(typeof process.env.saltRounds);
     const saltRounds = Number(process.env.saltRounds);
     const passwordPlain = req.body.password;
     try {
