@@ -7,7 +7,7 @@ const app = express();
 require("./lib/db/db");
 
 //Init router
-const router = require("./routes/router");
+const router = require("./lib/routes/router");
 
 //Init express
 require("./express")(app);
