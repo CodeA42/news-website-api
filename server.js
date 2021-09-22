@@ -1,5 +1,5 @@
 const express = require("express");
-require("dotenv").config();
+require("dotenv").config({path: './lib/config/.env'});
 
 const app = express();
 
