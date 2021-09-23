@@ -9,7 +9,7 @@ require("./lib/db/db");
 //Init router
 const router = require("./lib/routes/router");
 
-//Init passport
+//Init passport (before express)
 const passport = require('passport');
 require('./lib/auth/passport')(passport);
 
