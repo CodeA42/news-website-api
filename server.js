@@ -9,10 +9,6 @@ require("./lib/db/db");
 //Init router
 const router = require("./lib/routes/router");
 
-//Init passport (before express)
-const passport = require('passport');
-require('./lib/auth/passport')(passport);
-
 //Init express
 require("./express")(app);
 app.use(router);
